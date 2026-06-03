@@ -1,0 +1,19 @@
+{
+  "name": "Kronos — Athlete Timer",
+  "short_name": "Kronos",
+  "description": "Brutally minimal athlete timer & streak tracker",
+  "start_url": "/kronos/",
+  "scope": "/kronos/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
