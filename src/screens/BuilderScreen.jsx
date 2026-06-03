@@ -162,7 +162,7 @@ export default function BuilderScreen({ onStartSession }) {
     <div className="screen-enter flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center justify-center px-6 py-3 flex-shrink-0">
-        <img src="/banner.png" alt="Kronos" className="h-8 object-contain" />
+        <img src={`${import.meta.env.BASE_URL}banner.png`} alt="Kronos" className="h-8 object-contain" />
       </div>
 
       {/* Preset Strip */}
