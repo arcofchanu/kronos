@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Elms+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════
+   KRONOS — Global Styles
+   ═══════════════════════════════════════════════════════ */
+
+/* ── CSS Custom Properties ────────────────────────────── */
+:root {
+  --bg: #000000;
+  --text-primary: #FFFFFF;
+  --text-muted: #444444;
+  --accent: #C8D8FF;
+  --work-color: #FFFFFF;
+  --rest-color: #C8A86B;
+  --surface: #0A0A0A;
+  --border: #1A1A1A;
+  --danger: #FF4444;
+
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-timer: clamp(80px, 20vw, 160px);
+}
+
+/* ── Global Reset ─────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Elms Sans', sans-serif;
+  font-size: var(--text-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* ── Small Caps Utility ───────────────────────────────── */
+.small-caps {
+  font-variant: all-small-caps;
+  letter-spacing: 0.15em;
+}
+
+.letter-spaced {
+  letter-spacing: 0.3em;
+}
+
+/* ── Tabular Numbers (monospaced digits) ──────────────── */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Button Press Animation ───────────────────────────── */
+.btn-press {
+  transition: transform 100ms ease;
+}
+.btn-press:active {
+  transform: scale(0.92);
+}
+
+/* ── Scrollbar Styling ────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* ── Screen Transitions ───────────────────────────────── */
+.screen-enter {
+  animation: screenFadeIn 200ms ease-out forwards;
+}
+
+@keyframes screenFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Card Animations ──────────────────────────────────── */
+.card-enter {
+  animation: cardSlideIn 200ms ease-out forwards;
+}
+
+.card-exit {
+  animation: cardSlideOut 200ms ease-in forwards;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+
+/* ── Breathing Pulse (REST state particles) ───────────── */
+@keyframes breathe {
+  0%, 100% { transform: scale(0.97); }
+  50% { transform: scale(1.03); }
+}
+
+.breathing {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+/* ── Fade Animations ──────────────────────────────────── */
+.fade-in {
+  animation: fadeIn 200ms ease-out forwards;
+}
+
+.fade-out {
+  animation: fadeOut 200ms ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ── App Load ─────────────────────────────────────────── */
+.app-load {
+  animation: appFadeIn 300ms ease-out forwards;
+}
+
+@keyframes appFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Progress Bar ─────────────────────────────────────── */
+.progress-bar {
+  height: 2px;
+  background: var(--border);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  transition: width 100ms linear;
+}
+
+/* ── Preset Chip ──────────────────────────────────────── */
+.preset-chip {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 150ms ease;
+  font-size: var(--text-sm);
+}
+
+.preset-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.preset-chip.active {
+  border-color: var(--accent);
+  background: rgba(200, 216, 255, 0.08);
+  color: var(--accent);
+}
+
+/* ── Control Button ───────────────────────────────────── */
+.control-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 100ms ease, background 150ms ease;
+  color: var(--text-primary);
+  font-size: 20px;
+}
+
+.control-btn:active {
+  transform: scale(0.92);
+}
+
+.control-btn:hover {
+  background: #111111;
+}
+
+/* ── Number Input (Round Card) ────────────────────────── */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
