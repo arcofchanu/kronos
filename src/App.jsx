@@ -6,6 +6,7 @@ import StopwatchScreen from './screens/StopwatchScreen';
 import StreakScreen from './screens/StreakScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import { useStreak } from './hooks/useStreak';
+import { useWakeLock } from './hooks/useWakeLock';
 
 /**
  * App — Root component with state-based screen routing.
@@ -17,6 +18,9 @@ export default function App() {
   const [sessionDone, setSessionDone] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const streak = useStreak();
+
+  // Keep screen awake during timer & stopwatch
+  useWakeLock(activeScreen === 'timer' || activeScreen === 'stopwatch');
 
   const handleStartSession = useCallback((rounds) => {
     setSessionRounds(rounds);
